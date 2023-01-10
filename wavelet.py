@@ -39,4 +39,4 @@ for j in range(len(list_coeffs)):
 # 小波重构
 denoised_img = pywt.waverec2(rec_coeffs, w)
 denoised_img = Image.fromarray(np.uint8(denoised_img))
-denoised_img.save("result.bmp")
+denoised_img.save("result_wavelet.bmp")
