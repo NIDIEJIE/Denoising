@@ -19,11 +19,12 @@ def border(img, w, h):
     for i in range(h):
         if i == 0 or i == h - 1:
             for j in range(w):
-                gray = img.getpixel((i, j))
+                gray = img.getpixel((j, i))
+                print(i, j)
                 borderPixelList.append(gray)
         else:
-            gray1 = img.getpixel((i, 0))
-            gray2 = img.getpixel((i, w - 1))
+            gray1 = img.getpixel((0, i))
+            gray2 = img.getpixel((w - 1, i))
             borderPixelList.append(gray1)
             borderPixelList.append(gray2)
     # print(len(borderPixelList))
@@ -47,16 +48,16 @@ def denoise(path1, path2):
     for i in range(h):
         if i == 0 or i == h - 1:
             for j in range(w):
-                img2.putpixel((i, j), borderPixelList[b])
+                img2.putpixel((j, i), borderPixelList[b])
                 b += 1
         else:
-            img2.putpixel((i, 0), borderPixelList[b])
+            img2.putpixel((0, i), borderPixelList[b])
             b += 1
-            img2.putpixel((i, w - 1), borderPixelList[b])
+            img2.putpixel((w - 1, i), borderPixelList[b])
             b += 1
     img2.save(path2)
 
 
-path1 = 'origin.bmp'  # 带噪声的图像
-path2 = 'result_medianfilter.bmp'  # 降噪后的图像
+path1 = '221101-1-0-0.jpg'  # 带噪声的图像
+path2 = 'result_medianfilter_hose.jpg'  # 降噪后的图像
 denoise(path1, path2)

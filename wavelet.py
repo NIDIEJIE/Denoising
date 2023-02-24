@@ -8,7 +8,7 @@ from PIL import Image
 # (2)阈值处理过程，即对分解的各层系数进行阈值处理，获得估计小波系数；(3)重构过程，据去噪后的小波系数进行小波重构，获得去噪后的信号。
 # 影响效果的因素：分解层数、阈值、小波基的选择、阈值函数的选择
 
-img = cv2.imread("origin.bmp", 0)
+img = cv2.imread("221101-1-0-0.jpg", 0)
 # img是数组
 w = 'sym4'  # 定义小波基的类型
 l = 3  # 变换层次为3
@@ -39,4 +39,4 @@ for j in range(len(list_coeffs)):
 # 小波重构
 denoised_img = pywt.waverec2(rec_coeffs, w)
 denoised_img = Image.fromarray(np.uint8(denoised_img))
-denoised_img.save("result_wavelet.bmp")
+denoised_img.save("result_wavelet_hose.jpg")
